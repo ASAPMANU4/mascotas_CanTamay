@@ -9,6 +9,8 @@ class Propietario extends Model
  protected $table='propietarios';
     protected $primaryKey='id_propietario';
 
+    public $with=['mascotas'];
+
     //define si la llave primaria es o no un numero auto incrementable
     public $incrementing=true;
     //activar o desactrivar etiquetas de tiempo
@@ -26,4 +28,8 @@ class Propietario extends Model
         'localidad',
         
     ];
+
+    public function mascotas(){
+      return $this->hasMany(Mascota::class, 'id_propietario', 'id_propietario');
+    }
 }
