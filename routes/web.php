@@ -1,4 +1,5 @@
 <?php
+//use DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('prueba', function () {
+    //return base64_encode('HOLA');
+    //return DB::select("SELECT * FROM usuarios");
+});
+Route::get('desencriptar', function () {
+    return base64_decode('SE9MQQ==');
+});
+
+Route::post('validar','AccesoController@validar');
+
+
+Route::get('mascotas', function () {
+    return view('mascotas');
+});
+
+Route::apiResource('apiEspecie','EspecieController');
+
+Route::get('especies', function () {
+    return view('especies');
 });
