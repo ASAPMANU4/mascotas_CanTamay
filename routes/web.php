@@ -36,3 +36,7 @@ Route::apiResource('apiEspecie','EspecieController');
 Route::get('especies', function () {
     return view('especies');
 });
+Route::get('propietarios', function () {
+    return view('propietarios');
+});
+

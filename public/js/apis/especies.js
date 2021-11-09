@@ -1,6 +1,14 @@
 function init() {
 var apiEspecie='http://localhost/mascotas_cantamay/public/apiEspecie';
 new Vue ({
+
+	//asignamos el TOKEN 
+	http: {
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
+            }
+        },
+
 	el:'#apiEspecies',
 
 	data:{
