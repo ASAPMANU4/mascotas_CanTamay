@@ -32,6 +32,7 @@ Route::get('mascotas', function () {
 });
 
 Route::apiResource('apiEspecie','EspecieController');
+Route::apiResource('apiMascota','MascotaController');
 
 Route::get('especies', function () {
     return view('especies');

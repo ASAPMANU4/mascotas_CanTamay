@@ -11,9 +11,10 @@ class Mascota extends Model
 
 
     //especificamos las relaciones
-    public $with=['especie'];
+    
+    // public $with=['especie'];
 
-    public $with=['raza'];
+    // public $with=['raza'];
 
     //define si la llave primaria es o no un numero auto incrementable
     public $incrementing=false;
