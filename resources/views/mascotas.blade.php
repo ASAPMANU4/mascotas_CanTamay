@@ -77,7 +77,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" @click="guardarMascota()" v-if="agregando==true">Guardar</button>
-        <button type="button" class="btn btn-warning" @click="actualizarMascota()" v-if="agregando==false">Guardar</button>
+        <button type="button" class="btn btn-primary" @click="actualizarMascota()" v-if="agregando==false">Guardar</button>
       </div>
     </div>
   </div>

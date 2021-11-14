@@ -9,6 +9,7 @@ new Vue ({
 		peso:'',
 		genero:'',
 		agregando:true,
+		id_mascota:'',
 	},
 	// al crearse la pagina que ejecute automaticamente la carga de las mascotas
 	created:function(){
@@ -27,6 +28,10 @@ new Vue ({
 		},
 		mostrarModal:function(){
 			this.agregando=true;
+			this.nombre='';
+			this.edad='';
+			this.peso='';
+			this.genero='';
 			$('#modalMascota').modal('show');
 		},
 
@@ -60,13 +65,31 @@ new Vue ({
 				}
 			},
 
-			editandoMascota:function(){
+			editandoMascota:function(id){
 				this.agregando=false;
+				this.id_mascota=id;
+				this.$http.get(apiMascota + '/' + id).then(function(j){
+					// console.log(j.data);
+					this.nombre=j.data.nombre;
+					this.edad=j.data.edad;
+					this.genero=j.data.genero;
+					this.peso=j.data.peso;
+				});
+
 				$('#modalMascota').modal('show');
 			},
 			
 			actualizarMascota:function(){
-				alert('Estas modificando un mascota')
+				var jMascota = {nombre:this.nombre,
+								edad:this.edad,
+								peso:this.peso,
+								genero:this.genero
+								};
+				this.$http.patch(apiMascota + '/' + this.id_mascota,jMascota).then(function(j){
+					this.obtenerMascotas();
+
+				});
+				$('modalMascota').modal('hide');
 			}
 		}
 	

@@ -54,7 +54,7 @@ class MascotaController extends Controller
      */
     public function show($id)
     {
-        //
+        return $mascota=Mascota::find($id);
     }
 
     /**
@@ -77,7 +77,12 @@ class MascotaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mascota->nombre=$request->get('nombre');
+        $mascota->edad=$request->get('edad');
+        $mascota->peso=$request->get('peso');
+        $mascota->genero=$request->get('genero');
+
+        $mascota->update();
     }
 
     /**
