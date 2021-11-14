@@ -20,6 +20,7 @@
 							<!-- inicio de la tabla -->
 				<table class="table table-borderd table-striped">
 						<thead>
+							<th>ID mascota</th>
 							<th>Nombre</th>
 							<th>edad</th>
 							<th>genero</th>
@@ -28,14 +29,15 @@
 
 						<tbody>
 							<tr v-for="mascota in mascotas">
+								<td hidden="">@{{mascota.id_mascota}}</td>
 								<td>@{{mascota.nombre}}</td>
 								<td>@{{mascota.edad}}</td>
 								<td>@{{mascota.genero}}</td>
 								<td>
-									<button class="btn btn-warning btn-sm"><i class=" fas fa-pencil-alt"></i></button>
+									<button class="btn btn-warning btn-sm" @click="editandoMascota(mascota.id_mascota)"><i class=" fas fa-pencil-alt"></i></button>
 								</td>
 								<td>
-									<button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+									<button class="btn btn-danger btn-sm" @click="eliminarMascota(mascota.id_mascota)"><i class="fas fa-trash-alt"></i></button>
 								</td>
 							</tr>
 						</tbody>
@@ -54,17 +56,28 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregando mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel"v-if="agregando==true">Agregando mascota</h5>
+        <h5 class="modal-title" id="exampleModalLabel"v-if="agregando==false">Editando mascota</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         
+      	<input type="text" class="form-control" placeholder="Escriba el nombre de la mascota" v-model="nombre"><br>
+      	<input type="text" class="form-control" placeholder="Escriba la edad" v-model="edad"><br>
+      	<input type="number" class="form-control" placeholder="Escriba el peso" v-model="peso"><br>
+      	<select class="form-row" v-model="genero">
+      		<option disabled="">Elije un genero</option>
+      		<option value="M">M</option>
+      		<option value="H">H</option>
+      	</select>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" @click="guardarMascota()" v-if="agregando==true">Guardar</button>
+        <button type="button" class="btn btn-warning" @click="actualizarMascota()" v-if="agregando==false">Guardar</button>
       </div>
     </div>
   </div>
