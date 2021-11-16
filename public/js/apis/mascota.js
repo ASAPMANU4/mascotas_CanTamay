@@ -1,9 +1,11 @@
 var apiMascota='http://localhost/mascotas_cantamay/public/apiMascota';
+var apiEspecie='http://localhost/mascotas_cantamay/public/apiEspecie';
 new Vue ({
 	el:"#apiMascota",
 	data:{
 		prueba:'esto es una prueba de nuevo',
 		mascotas:[],
+		especies:[],
 		nombre:'',
 		edad:'',
 		peso:'',
@@ -14,6 +16,7 @@ new Vue ({
 	// al crearse la pagina que ejecute automaticamente la carga de las mascotas
 	created:function(){
 		this.obtenerMascotas();
+		this.obtenerEspecies();
 	},
 
 	methods:{
@@ -37,7 +40,8 @@ new Vue ({
 
 		guardarMascota:function(){
 			// se construye el json para enviar al controlador 
-			var mascota={nombre:this.nombre,edad:this.edad,peso:this.peso,genero:this.genero};
+			var mascota={nombre:this.nombre,edad:this.edad,peso:this.peso,genero:this.genero,id_especie:this.id_especie};
+
 			// se envia los datos en json al controlador 
 			this.$http.post(apiMascota,mascota).then(function(j){
 				this.obtenerMascotas();
@@ -45,6 +49,7 @@ new Vue ({
 				this.edad='';
 				this.peso='';
 				this.genero='';
+				this.id_especie='';
 			}).catch(function(j){
 				console.log(j);
 			});
@@ -90,6 +95,13 @@ new Vue ({
 
 				});
 				$('modalMascota').modal('hide');
+			},
+
+			obtenerEspecies:function(){
+				this.$http.get(apiEspecie).then(function(j){
+					this.especies=j.data;
+
+				})
 			}
 		}
 	

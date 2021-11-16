@@ -41,6 +41,7 @@ class MascotaController extends Controller
         $mascota->edad=$request->get('edad');
         $mascota->peso=$request->get('peso');
         $mascota->genero=$request->get('genero');
+        $mascota->id_especie=$request->get('id_especie');
 
         $mascota->save();
 
