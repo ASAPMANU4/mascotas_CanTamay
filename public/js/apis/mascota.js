@@ -12,13 +12,15 @@ new Vue ({
 		genero:'',
 		agregando:true,
 		id_mascota:'',
+		id_especie:'',
+		buscar:'',
 	},
 	// al crearse la pagina que ejecute automaticamente la carga de las mascotas
 	created:function(){
 		this.obtenerMascotas();
 		this.obtenerEspecies();
 	},
-
+	// inicio de methods
 	methods:{
 		obtenerMascotas:function(){
 			this.$http.get( apiMascota).then(function(j){
@@ -35,6 +37,7 @@ new Vue ({
 			this.edad='';
 			this.peso='';
 			this.genero='';
+			this.id_especie='';
 			$('#modalMascota').modal('show');
 		},
 
@@ -88,7 +91,8 @@ new Vue ({
 				var jMascota = {nombre:this.nombre,
 								edad:this.edad,
 								peso:this.peso,
-								genero:this.genero
+								genero:this.genero,
+								id_especie:this.id_especie
 								};
 				this.$http.patch(apiMascota + '/' + this.id_mascota,jMascota).then(function(j){
 					this.obtenerMascotas();
@@ -103,7 +107,20 @@ new Vue ({
 
 				})
 			}
+		},
+		// fin de methods
+		
+		// incio de computed
+		computed:{
+			filtroMascotas:function(){
+				return this.mascotas.filter((mascota)=>{
+					return mascota.nombre.toLowerCase().match(this.buscar.toLowerCase().trim()) ||
+							mascota.especie.especie.toLowerCase().match(this.buscar.toLowerCase().trim())
+				});
+			}
 		}
-	
+		// fin de computed
+
+
 });
 

@@ -13,6 +13,9 @@
 							<i class="fas fa-plus" @click="mostrarModal()"></i>
 						</span>
 					</h3>
+					<div class="col-sm-6">
+						<input type="text" placeholder="Escriba el nombre de la mascota o la especie" class="form-control">
+					</div>
 				</div>
 
 						<div class="card-body">
@@ -28,7 +31,7 @@
 						</thead>
 
 						<tbody>
-							<tr v-for="mascota in mascotas">
+							<tr v-for="mascota in filtroMascotas">
 								<td hidden="">@{{mascota.id_mascota}}</td>
 								<td>@{{mascota.nombre}}</td>
 								<td>@{{mascota.edad}}</td>
