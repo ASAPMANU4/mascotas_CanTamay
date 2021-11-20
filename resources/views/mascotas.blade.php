@@ -77,7 +77,12 @@
       	</select>
       	<br>
       	<select class="form-control" v-model="id_especie">
-      		<option v-for="especie in especies" v-bind:value="especie.id_especie">@{{especie.especie}}</option>
+      		<option v-for="especie in especies" v-bind:value="especie.id_especie" @change="obtenerRazas">@{{especie.especie}}</option>
+      	</select>
+      	<br>
+      	<select class="form-control">
+      			<option value="" disabled="">seleccione una raza</option>
+      			<option v-for="raza in razas" v-bind:value="id_raza">@{{raza.raza}}</option>
       	</select>
       <!-- 	<h5>especie elegida es: @{{id_especie}}</h5> -->
 

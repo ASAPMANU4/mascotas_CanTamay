@@ -6,6 +6,7 @@ new Vue ({
 		prueba:'esto es una prueba de nuevo',
 		mascotas:[],
 		especies:[],
+		razas:[],
 		nombre:'',
 		edad:'',
 		peso:'',
@@ -13,6 +14,7 @@ new Vue ({
 		agregando:true,
 		id_mascota:'',
 		id_especie:'',
+		id_raza:'',
 		buscar:'',
 	},
 	// al crearse la pagina que ejecute automaticamente la carga de las mascotas
@@ -106,6 +108,15 @@ new Vue ({
 					this.especies=j.data;
 
 				})
+			},
+
+			obtenerRazas(e){
+				var id_especie=e.target.value;
+				// console.log(id_especie);
+
+				this.$http.get(ruta + '/getRazas/' + id_especie).then(function(j){
+					this.razas=j.data;
+				});
 			}
 		},
 		// fin de methods
