@@ -33,12 +33,16 @@ Route::get('mascotas', function () {
 
 Route::apiResource('apiEspecie','EspecieController');
 Route::apiResource('apiMascota','MascotaController');
+Route::apiResource('apiProducto','ProductoController');
 
 Route::get('especies', function () {
     return view('especies');
 });
 Route::get('propietarios', function () {
     return view('propietarios');
+});
+Route::get('ventas', function () {
+    return view('ventas');
 });
 
 // RUTA PARAMETRIZADAS+
