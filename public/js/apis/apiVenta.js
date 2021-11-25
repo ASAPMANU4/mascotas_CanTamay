@@ -15,6 +15,8 @@ new Vue ({
 		mensaje:"Hola mundo",
 		sku:'',
 		ventas:[],
+		cantidades:[],
+		cant:1,
 
 	},
 	//se ejcuta automaticamente cuando se crea la pagina
@@ -38,6 +40,7 @@ new Vue ({
 				};
 
 				this.ventas.push(producto);
+				this.cantidades.push(1);
 				this.sku='';
 			});
 		}

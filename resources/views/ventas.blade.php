@@ -28,11 +28,11 @@
 				<th>total</th>
 			</thead>
 			<tbody>
-				<tr v-for="venta in ventas">
+				<tr v-for="(venta, index) in ventas">
 					<td>@{{venta.sku}}</td>
 					<td>@{{venta.nombre}}</td>
 					<td>@{{venta.precio}}</td>
-					<td>@{{venta.cantidad}}</td>
+					<td><input type="number" v-model.number="cantidades[index]"></td>
 					<td>@{{venta.total}}</td>
 				</tr>
 			</tbody>
