@@ -17,7 +17,7 @@ class Mascota extends Model
     // public $with=['raza'];
 
     //define si la llave primaria es o no un numero auto incrementable
-    public $incrementing=false;
+    public $incrementing=true;
     //activar o desactrivar etiquetas de tiempo
     public $timestamps=false;
 

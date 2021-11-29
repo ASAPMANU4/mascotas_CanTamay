@@ -25,13 +25,13 @@ new Vue ({
 	// inicio de methods
 	methods:{
 		obtenerMascotas:function(){
-			this.$http.get( apiMascota).then(function(j){
+			this.$http.get(apiMascota).then(function(j){
 				this.mascotas=j.data;
- 				console.log(j.data);
+				console.log(j.data);
 			}).catch(function(j){
 				console.log(j);
-			});		
-	
+
+			});
 		},
 		mostrarModal:function(){
 			this.agregando=true;
@@ -134,4 +134,3 @@ new Vue ({
 
 
 });
-
